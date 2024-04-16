@@ -66,7 +66,7 @@ impl NotificationService{
             .header("Accept", "application/json")
             .send().await;
         log::warn_!("Sent unsubscribe request to: {}", request_url);
-        
+
         return match request{
             Ok(f) => match f.json::<SubscriberRequest>().await{
                 Ok(x) => Ok(x),
@@ -80,5 +80,10 @@ impl NotificationService{
     pub fn unsubscribe(product_type: &str)->Result<SubscriberRequest>{
         let product_type_clone = String::from(product_type);
         return thread::spawn(move|| Self::unsubscribe_request(product_type_clone)).join().unwrap();
+    }
+
+    pub fn receive_notification(payload: Notification)->Result<Notification>{
+        let subscriber_result: Notification = NotificationRepository::add(payload);
+        return Ok(subscriber_result);
     }
 }
