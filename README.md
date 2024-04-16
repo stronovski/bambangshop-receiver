@@ -90,3 +90,8 @@ This is the place for you to write reflections:
 2. lazy_static digunakan karena pada dasarnya static variable bersifat immutable di dalam rust sehingga dapat menjamin keamanan thread ketika melakukan multithreading jika dibandingkan dengan java yang dapat datanya dapat berubah.
 
 #### Reflection Subscriber-2
+1. src/lib.rs sangat berguna untuk mendefinisikan informasi dan komponen yang diperlukan pada bagian-bagian aplikasi lainnya.Terdapat berbagai konfigurasi ataupun dependensi aplikasi, error response, dan juga inisialisasi APP_CONFIG untuk mengimplementasikan kode.
+
+2. Dengan menggunakan observer pattern, maka publisher dan observer akan dipisahkan sehingga akan lebih mudah melakukan spawning terhadap llebih dari 1 instance, sehingga penambahan subscriber ke dalam notifikasi akan lebih mudah untuk dilakukan dan membuat kode lebih efisien.
+
+3. Dengan adanya testing dengan menggunakan postman, maka pengembang pun dapat menguji apakah program dapat berfungsi sebagaimana mestinya atau tidak dengan cara memberikan verifikasi apakah program dapat mengirimkan respon yang sesuai dengan ekspektasi, sehingga akan sangat memudahkan dalam melakukan testing terutama dengan automation.
