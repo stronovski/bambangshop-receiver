@@ -85,5 +85,8 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. Karena Notifications akan dibaca oleh banyak thread, maka Read Write Lock digunakan karena sifatnya yang dapat mengakomodasi jumlah read/write dalam satu waktu secara concurrent sehingga akan menaikkan performance program, sedangkan MUTEX hanya dapat memperbolehkan satu thread yang berjalan untuk read/write pada satu waktu 
+
+2. lazy_static digunakan karena pada dasarnya static variable bersifat immutable di dalam rust sehingga dapat menjamin keamanan thread ketika melakukan multithreading jika dibandingkan dengan java yang dapat datanya dapat berubah.
 
 #### Reflection Subscriber-2
